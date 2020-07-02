@@ -1,0 +1,20 @@
+
+.App__title {
+    color:white;
+    padding:16px;
+    font-family: 'Raleway';
+    font-style:italic;
+    position: relative;
+    display: flex;
+    justify-content: center;
+
+
+    &:after{
+        content:'';
+        position: absolute;
+        height: 2px;
+        width:140px;
+        background-color: #222;
+        bottom:10px;
+    }
+}

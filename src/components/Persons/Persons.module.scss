@@ -1,0 +1,66 @@
+.prog{
+    color: red;
+    text-align: center;
+} 
+.Person__wrapper{
+    grid-gap:30px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    height:400px;
+    width:90%;
+    margin:0 auto;
+
+
+    .flex{
+        background-color:#222;
+        box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.25);
+        height:auto;
+        color:white;
+        padding: 10px 15px;
+        border: 1px solid #52A2DD;
+
+
+    .person__title{
+        margin:20px 0;
+    }
+    .person__img{
+        width:100px;
+        height:100px;
+        border-radius:50%;
+        background-color: #52A2DD;
+        display: grid;
+        place-content: center;
+        border: 1px solid white;
+        margin: 0 auto;
+
+         p{
+            text-align:center;
+            color:white;
+        }
+        
+    }
+   
+    .person_input{
+        outline: none;
+        font-style: normal;
+        font-weight: 300;
+        font-size: 14px;
+        border: 1px solid #52A2DD;
+        box-sizing: border-box;
+        border-radius: 9px;
+        color:white;
+        padding: 8px 15px;
+        width: 100%;
+        margin:10px 0;
+        background-color:unset;
+    
+        &::placeholder{
+            color:#52A2DD;
+            
+        }
+    }
+    }
+    
+    
+    
+}
