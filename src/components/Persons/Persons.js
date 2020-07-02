@@ -19,39 +19,70 @@ class Persons extends Component {
 
      changedNameHandler =(e, key)=>{
          
-// ========================= find the index of the of target one that is click or onChange =========================
+// ============== find the index of the of target one that is click or onChange ==============
          let personIndex = [...this.state.persons].findIndex(item =>{
-            return item.key === key
+            return item.key === key;
         })
-// ========================= Update the name of target one which is  click or onChange =========================
+// ============== Update the name of target one which is  click or onChange ==============
         let person = [...this.state.persons][personIndex];
         person.name = e.target.value
         
-// ========================= update the target part of the  Array that the name have already change  =========================
+// ============== update the target part of the  Array that the name have already change  ==============
         let persons = [...this.state.persons];
             persons[personIndex] = person;
-            // ========================= update the Dom =========================
+            // ============== update the Dom ==============
         this.setState({ persons })
 
     }
+
+
     deletePersonHandler = (e, key)=>{
 
-// ========================= find the index of the of target one that is click  =========================
+// ============== find the index of the of target one that is click  ==============
         let personIndex = [...this.state.persons].findIndex(item => item.key === key);
-        let persons =  this.state.persons;
+        let persons =  [...this.state.persons];
 
-        // ========================= find the index of the of target one that is click  =========================
+        // ============== Delete  by the Index find  ==============
         let deletPersonByIndex = this.state.persons.slice();
         deletPersonByIndex.splice(personIndex , 1);
 
+         // ============== Update Arraya and Dom  ==============
         persons = deletPersonByIndex;
         this.setState({ persons });
     }
 
+   UserImageHandler = (e, key) =>{
+
+
+      let personIndex = [...this.state.persons].findIndex(item => item.key === key);
+      let persons =  [...this.state.persons];
+       
+       let updateUrl = persons[personIndex];
+
+    
+       let fileReader = new FileReader();
+       
+
+        fileReader.onload = ()=>{
+         let  dataURL = fileReader.result;
+         
+          updateUrl.url = dataURL;
+          persons[personIndex] = updateUrl
+          this.setState({ persons });
+        }
+     
+        fileReader.readAsDataURL( e.target.files[0]);
+       
+   
+            e.target.style.display = 'none';
+     
+        
+   }
+ 
     render() { 
-
+        
         let perosnList = null;
-
+        
         if(this.state.showPerson){
             perosnList = (
                  <div  className={style.Person__wrapper}>
@@ -60,8 +91,10 @@ class Persons extends Component {
                         key ={ person.key} 
                         name = {person.name}
                         age = {person.age}
+                        imgUrl = {person.url}
                         changed = {(e) => this.changedNameHandler(e, person.key)}
-                        personDelete = {(e) => this.deletePersonHandler(e, person.key)}/>
+                        personDelete = {(e) => this.deletePersonHandler(e, person.key)}
+                        img = {(e) => this.UserImageHandler(e, person.key)}/>
                    } )}
                  </div>
             );
