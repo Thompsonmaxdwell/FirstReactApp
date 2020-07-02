@@ -17,6 +17,37 @@ class Persons extends Component {
         showPerson : true,
      }
 
+     changedNameHandler =(e, key)=>{
+         
+// ========================= find the index of the of target one that is click or onChange =========================
+         let personIndex = [...this.state.persons].findIndex(item =>{
+            return item.key === key
+        })
+// ========================= Update the name of target one which is  click or onChange =========================
+        let person = [...this.state.persons][personIndex];
+        person.name = e.target.value
+        
+// ========================= update the target part of the  Array that the name have already change  =========================
+        let persons = [...this.state.persons];
+            persons[personIndex] = person;
+            // ========================= update the Dom =========================
+        this.setState({ persons })
+
+    }
+    deletePersonHandler = (e, key)=>{
+
+// ========================= find the index of the of target one that is click  =========================
+        let personIndex = [...this.state.persons].findIndex(item => item.key === key);
+        let persons =  this.state.persons;
+
+        // ========================= find the index of the of target one that is click  =========================
+        let deletPersonByIndex = this.state.persons.slice();
+        deletPersonByIndex.splice(personIndex , 1);
+
+        persons = deletPersonByIndex;
+        this.setState({ persons });
+    }
+
     render() { 
 
         let perosnList = null;
@@ -28,11 +59,12 @@ class Persons extends Component {
                      return <Person 
                         key ={ person.key} 
                         name = {person.name}
-                        age = {person.age}/>
+                        age = {person.age}
+                        changed = {(e) => this.changedNameHandler(e, person.key)}
+                        personDelete = {(e) => this.deletePersonHandler(e, person.key)}/>
                    } )}
                  </div>
             );
-
         }
 
         return ( 

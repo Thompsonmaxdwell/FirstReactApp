@@ -27,10 +27,9 @@
         width:100px;
         height:100px;
         border-radius:50%;
-        background-color: #52A2DD;
+        background-color: green;
         display: grid;
         place-content: center;
-        border: 1px solid white;
         margin: 0 auto;
 
          p{
@@ -39,19 +38,38 @@
         }
         
     }
-   
+   .personDelete{
+       background-color:green;
+       padding:8px;
+       border:none;
+       font-size: 17px;
+       color:white;
+       border-radius: 9px;
+       transition: width 1s ease-in-out;
+       width:50%;
+       margin: 10px auto;
+       display: grid;
+       place-content: center;
+      
+
+       &:hover{
+        background-color:green;
+        width:100%;
+        transition: width .7s ease-in-out;
+       }
+   }
     .person_input{
         outline: none;
         font-style: normal;
         font-weight: 300;
-        font-size: 14px;
+        font-size: 15px;
         border: 1px solid #52A2DD;
         box-sizing: border-box;
         border-radius: 9px;
-        color:white;
+        color:#52A2DD;
         padding: 8px 15px;
         width: 100%;
-        margin:10px 0;
+        margin:15px 0;
         background-color:unset;
     
         &::placeholder{
